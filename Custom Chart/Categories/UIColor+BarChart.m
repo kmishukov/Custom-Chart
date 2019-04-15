@@ -6,9 +6,9 @@
 //  Copyright © 2019 Konstantin Mishukov. All rights reserved.
 //
 
-#import "UIColor+BarChartView.h"
+#import "UIColor+BarChart.h"
 
-@implementation UIColor (BarChartView)
+@implementation UIColor (BarChart)
 
 +(UIColor*)chartViewBackgroundColor {
     UIColor *color = [UIColor colorWithRed: 26.0f/255.0f green: 35.0f/255.0f blue: 43.0f/255.0f alpha: 1];

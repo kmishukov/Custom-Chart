@@ -21,9 +21,7 @@ UILabel *sName;
     return self;
 }
 
-
 -(void)addLayers{
-    
     // Colored Dot;
     CGFloat dotRadius = self.contentView.frame.size.height / 3;
     dot = [[UIView alloc] initWithFrame: CGRectMake(0, 0, dotRadius, dotRadius)];
@@ -32,11 +30,9 @@ UILabel *sName;
     [self.contentView addSubview: dot];
     // Constraints
     [dot.heightAnchor constraintEqualToConstant: dotRadius].active = YES;
-//    [dot.heightAnchor constraintEqualToAnchor: self.contentView.heightAnchor multiplier: 0.4].active = YES;
     [dot.widthAnchor constraintLessThanOrEqualToAnchor: dot.heightAnchor multiplier: 1].active = YES;
     [dot.centerYAnchor constraintEqualToAnchor: self.contentView.centerYAnchor].active = YES;
     [dot.leftAnchor constraintEqualToAnchor: self.contentView.leftAnchor constant: 5].active = YES;
-
     // sName;
     sName = [[UILabel alloc] initWithFrame: CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)];
     sName.font = [UIFont systemFontOfSize: 30];

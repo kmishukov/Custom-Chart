@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "../Categories/UIColor+BarChartView.h"
+#import "../Categories/UIColor+BarChart.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

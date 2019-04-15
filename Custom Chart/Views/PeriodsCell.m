@@ -7,7 +7,7 @@
 //
 
 #import "PeriodsCell.h"
-#import "../Categories/UIColor+BarChartView.h"
+#import "../Categories/UIColor+BarChart.h"
 
 @implementation PeriodsCell
 

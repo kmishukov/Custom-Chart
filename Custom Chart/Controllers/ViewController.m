@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "../Views/BarChartView.h"
+#import "../Views/BarChartView+ConfigureWithData.h"
 
 @interface ViewController ()
 @property (strong,nonatomic) BarChartView *barChartView;

@@ -7,25 +7,13 @@
 //
 
 #import "BarChartView.h"
-#import "../Categories/UIColor+BarChartView.h"
-#import "../Views/SeriesCell.h"
-#import "../Views/PeriodsCell.h"
+
 
 @implementation BarChartView
-
-// Data
-NSDictionary *dictionary;
-NSArray *series;
-NSArray *periods;
-double periodMaxValue;
 
 // Views
 UIView *chartFieldView;
 UIView *topSubview;
-UILabel *titleLabel;
-UILabel *subtitleLabel;
-UICollectionView *topCollectionView;
-UICollectionView *bottomCollectionView;
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -38,24 +26,6 @@ UICollectionView *bottomCollectionView;
         [self addBottomCollectionView];
     }
     return self;
-}
-
-// Method That Builds UIView
-- (void)configureWithData:(NSDictionary *)data {
-    dictionary = data;
-    series = dictionary[@"series"];
-    periods = dictionary[@"periods"];
-    for (int i=0; i < [periods count]; i++) {
-        NSNumber *totalValue = periods[i][@"fBarTotalValue"];
-        if ([totalValue doubleValue] > periodMaxValue) {
-            periodMaxValue = [totalValue doubleValue];
-        }
-    }
-    NSString *sWidgetName = dictionary[@"sWidgetName"] != nil ? dictionary[@"sWidgetName"] : @"???";
-    NSString *sMeasureName = dictionary[@"sMeasureName"] != nil ? dictionary[@"sMeasureName"] : @"???";
-    titleLabel.text = sWidgetName;
-    subtitleLabel.text = sMeasureName;
-    [self layoutIfNeeded];
 }
 
 // Прямоугольник с закругленными углами;
@@ -87,38 +57,38 @@ UICollectionView *bottomCollectionView;
 
 // Тайтл и сабтайтл;
 -(void)addTopSubviewLabels {
-    titleLabel = [UILabel new];
+    _titleLabel = [UILabel new];
     CGFloat fontSize = 50;
-    titleLabel.font = [UIFont systemFontOfSize: fontSize];
-    titleLabel.numberOfLines = 1;
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.adjustsFontSizeToFitWidth = YES;
-    titleLabel.minimumScaleFactor = 0.1;
-    titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [topSubview addSubview: titleLabel];
-    [titleLabel.topAnchor constraintEqualToAnchor: topSubview.topAnchor constant: 0].active = YES;
-    [titleLabel.leadingAnchor constraintEqualToAnchor: topSubview.leadingAnchor constant: 0].active = YES;
-    [titleLabel setContentHuggingPriority: UILayoutPriorityDefaultHigh forAxis: UILayoutConstraintAxisHorizontal];
-    [titleLabel setContentCompressionResistancePriority: UILayoutPriorityDefaultLow forAxis: UILayoutConstraintAxisHorizontal];
-    [titleLabel.bottomAnchor constraintLessThanOrEqualToAnchor: topSubview.centerYAnchor constant: 0].active = YES;
+    _titleLabel.font = [UIFont systemFontOfSize: fontSize];
+    _titleLabel.numberOfLines = 1;
+    _titleLabel.textColor = [UIColor whiteColor];
+    _titleLabel.adjustsFontSizeToFitWidth = YES;
+    _titleLabel.minimumScaleFactor = 0.1;
+    _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [topSubview addSubview: _titleLabel];
+    [_titleLabel.topAnchor constraintEqualToAnchor: topSubview.topAnchor constant: 0].active = YES;
+    [_titleLabel.leadingAnchor constraintEqualToAnchor: topSubview.leadingAnchor constant: 0].active = YES;
+    [_titleLabel setContentHuggingPriority: UILayoutPriorityDefaultHigh forAxis: UILayoutConstraintAxisHorizontal];
+    [_titleLabel setContentCompressionResistancePriority: UILayoutPriorityDefaultLow forAxis: UILayoutConstraintAxisHorizontal];
+    [_titleLabel.bottomAnchor constraintLessThanOrEqualToAnchor: topSubview.centerYAnchor constant: 0].active = YES;
     // titleLabel.backgroundColor = [UIColor redColor]; // UITest
 
-    subtitleLabel = [UILabel new];
-    subtitleLabel.font = [UIFont systemFontOfSize: (titleLabel.font.pointSize - 10)];
-    subtitleLabel.numberOfLines = 1;
-    subtitleLabel.adjustsFontSizeToFitWidth = YES;
-    subtitleLabel.minimumScaleFactor = 0.01;
-    subtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    subtitleLabel.textColor = [UIColor whiteColor];
-    subtitleLabel.alpha = 0.5;
-    [topSubview addSubview: subtitleLabel];
-    [subtitleLabel.centerYAnchor constraintEqualToAnchor: titleLabel.centerYAnchor].active = YES;
+    _subtitleLabel = [UILabel new];
+    _subtitleLabel.font = [UIFont systemFontOfSize: (_titleLabel.font.pointSize - 10)];
+    _subtitleLabel.numberOfLines = 1;
+    _subtitleLabel.adjustsFontSizeToFitWidth = YES;
+    _subtitleLabel.minimumScaleFactor = 0.01;
+    _subtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    _subtitleLabel.textColor = [UIColor whiteColor];
+    _subtitleLabel.alpha = 0.5;
+    [topSubview addSubview: _subtitleLabel];
+    [_subtitleLabel.centerYAnchor constraintEqualToAnchor: _titleLabel.centerYAnchor].active = YES;
     CGFloat spacingOffset = (0.05196402877 * [UIScreen mainScreen].bounds.size.width) / 3;
-    [subtitleLabel.leadingAnchor constraintEqualToAnchor: titleLabel.trailingAnchor constant: spacingOffset].active = YES;
-    [subtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor: topSubview.trailingAnchor constant: -5].active = YES;
-    [subtitleLabel setContentCompressionResistancePriority: UILayoutPriorityDefaultHigh forAxis: UILayoutConstraintAxisHorizontal];
-    [subtitleLabel setContentHuggingPriority: UILayoutPriorityDefaultLow forAxis: UILayoutConstraintAxisHorizontal];
-    [subtitleLabel.widthAnchor constraintEqualToAnchor: titleLabel.widthAnchor multiplier: 0.20].active = YES;
+    [_subtitleLabel.leadingAnchor constraintEqualToAnchor: _titleLabel.trailingAnchor constant: spacingOffset].active = YES;
+    [_subtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor: topSubview.trailingAnchor constant: -5].active = YES;
+    [_subtitleLabel setContentCompressionResistancePriority: UILayoutPriorityDefaultHigh forAxis: UILayoutConstraintAxisHorizontal];
+    [_subtitleLabel setContentHuggingPriority: UILayoutPriorityDefaultLow forAxis: UILayoutConstraintAxisHorizontal];
+    [_subtitleLabel.widthAnchor constraintEqualToAnchor: _titleLabel.widthAnchor multiplier: 0.20].active = YES;
     // subtitleLabel.backgroundColor = [UIColor greenColor]; // UITest
 }
 
@@ -126,64 +96,22 @@ UICollectionView *bottomCollectionView;
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection: UICollectionViewScrollDirectionHorizontal];
     flowLayout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize;
-    topCollectionView = [[UICollectionView alloc]
+    _topCollectionView = [[UICollectionView alloc]
                          initWithFrame: CGRectMake(50, 50, topSubview.frame.size.width, topSubview.frame.size.height / 2)
                          collectionViewLayout: flowLayout ];
-    [topCollectionView registerClass: SeriesCell.class forCellWithReuseIdentifier: @"topCollectionViewCell"];
-    topCollectionView.delegate = self;
-    topCollectionView.dataSource = self;
-    topCollectionView.backgroundColor = [UIColor clearColor]; // UITest
-    topCollectionView.translatesAutoresizingMaskIntoConstraints = NO;
-    [topSubview addSubview: topCollectionView];
-    [topCollectionView.heightAnchor constraintEqualToAnchor: topSubview.heightAnchor multiplier: 0.5].active = YES;
-    [topCollectionView.leadingAnchor constraintEqualToAnchor: topSubview.leadingAnchor].active = YES;
-    [topCollectionView.trailingAnchor constraintEqualToAnchor: topSubview.trailingAnchor].active = YES;
-    [topCollectionView.bottomAnchor constraintEqualToAnchor: topSubview.bottomAnchor].active = YES;
+    [_topCollectionView registerClass: SeriesCell.class forCellWithReuseIdentifier: @"topCollectionViewCell"];
+    _topCollectionView.delegate = self;
+    _topCollectionView.dataSource = self;
+    _topCollectionView.backgroundColor = [UIColor clearColor]; // UITest
+    _topCollectionView.translatesAutoresizingMaskIntoConstraints = NO;
+    [topSubview addSubview: _topCollectionView];
+    [_topCollectionView.heightAnchor constraintEqualToAnchor: topSubview.heightAnchor multiplier: 0.5].active = YES;
+    [_topCollectionView.leadingAnchor constraintEqualToAnchor: topSubview.leadingAnchor].active = YES;
+    [_topCollectionView.trailingAnchor constraintEqualToAnchor: topSubview.trailingAnchor].active = YES;
+    [_topCollectionView.bottomAnchor constraintEqualToAnchor: topSubview.bottomAnchor].active = YES;
 }
 
-// MARK: CollectionView Delegates & Datasource;
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (collectionView==topCollectionView) {
-        SeriesCell *cell = [topCollectionView dequeueReusableCellWithReuseIdentifier: @"topCollectionViewCell" forIndexPath: indexPath];
-        NSString *title = series[indexPath.row][@"sName"] != nil ? series[indexPath.row][@"sName"] : @"???";
-        NSDictionary *colorDict = series[indexPath.row][@"color"];
-        [cell configureCellwithTitle: title andColor: colorDict];
-        return cell;
-    } else if (collectionView == bottomCollectionView) {
-        PeriodsCell *cell = [bottomCollectionView dequeueReusableCellWithReuseIdentifier: @"bottomCollectionViewCell" forIndexPath: indexPath];
-        NSDictionary *periodData = periods[indexPath.row];
-        [cell configureWithData: periodData maxValue: periodMaxValue seriesArray: series];
-        return cell;
-    } else {
-        return nil;
-    }
-};
 
-- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (collectionView == topCollectionView) {
-        return [series count];
-    } else if (collectionView == bottomCollectionView) {
-        return [periods count];
-    } else {
-        return 0;
-    }
-}
-
-- (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
-    if (collectionView == topCollectionView || collectionView == bottomCollectionView) {
-        return 1;
-    }
-    return 0;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (collectionView==bottomCollectionView) {
-        NSLog(@"frameSize.Width: %f, frameSize.Height: %f", collectionView.frame.size.width / 4.0, collectionView.frame.size.height);
-        return CGSizeMake(collectionView.frame.size.width / 4.0, collectionView.frame.size.height);
-    } else {
-        return CGSizeMake(CGRectGetWidth(collectionView.frame), (CGRectGetHeight(collectionView.frame)));
-    }
-}
 
 // MARK: BottomCollectionView Setup
 -(void)addBottomCollectionView {
@@ -194,36 +122,25 @@ UICollectionView *bottomCollectionView;
     flowLayout.minimumLineSpacing = 0;
     
     
-    bottomCollectionView = [[UICollectionView alloc]
+    _bottomCollectionView = [[UICollectionView alloc]
                          initWithFrame: CGRectMake(50, 50, 0, 0)
                          collectionViewLayout: flowLayout];
     
-    [bottomCollectionView registerClass: PeriodsCell.class forCellWithReuseIdentifier: @"bottomCollectionViewCell"];
-    bottomCollectionView.delegate = self;
-    bottomCollectionView.dataSource = self;
-    bottomCollectionView.backgroundColor = [UIColor clearColor]; // UITest
-    bottomCollectionView.translatesAutoresizingMaskIntoConstraints = NO;
-    [chartFieldView addSubview: bottomCollectionView];
-    [bottomCollectionView.topAnchor constraintEqualToAnchor: topSubview.bottomAnchor constant: 10].active = YES;
-    [bottomCollectionView.leftAnchor constraintEqualToAnchor: chartFieldView.leftAnchor constant: 20].active = YES;
-    [bottomCollectionView.rightAnchor constraintEqualToAnchor: chartFieldView.rightAnchor constant: -20].active = YES;
-    [bottomCollectionView.bottomAnchor constraintEqualToAnchor: chartFieldView.bottomAnchor constant: -50].active = YES;
+    [_bottomCollectionView registerClass: PeriodsCell.class forCellWithReuseIdentifier: @"bottomCollectionViewCell"];
+//    _bottomCollectionView.delegate = self;
+//    _bottomCollectionView.dataSource = self;
+    _bottomCollectionView.backgroundColor = [UIColor clearColor]; // UITest
+    _bottomCollectionView.translatesAutoresizingMaskIntoConstraints = NO;
+    [chartFieldView addSubview: _bottomCollectionView];
+    [_bottomCollectionView.topAnchor constraintEqualToAnchor: topSubview.bottomAnchor constant: 10].active = YES;
+    [_bottomCollectionView.leftAnchor constraintEqualToAnchor: chartFieldView.leftAnchor constant: 20].active = YES;
+    [_bottomCollectionView.rightAnchor constraintEqualToAnchor: chartFieldView.rightAnchor constant: -20].active = YES;
+    [_bottomCollectionView.bottomAnchor constraintEqualToAnchor: chartFieldView.bottomAnchor constant: -50].active = YES;
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     [self setNeedsDisplay];
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [bottomCollectionView.collectionViewLayout invalidateLayout];
-//        [bottomCollectionView invalidateIntrinsicContentSize];
-//        [bottomCollectionView reloadData];
-//    });
-   
 }
-
-
-
-
-
 
 @end
