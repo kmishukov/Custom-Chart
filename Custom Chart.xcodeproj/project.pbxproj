@@ -15,6 +15,11 @@
 		1D198A0D225FA7F600FDEF13 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D198A0C225FA7F600FDEF13 /* main.m */; };
 		1D198A17225FA7F600FDEF13 /* Custom_ChartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D198A16225FA7F600FDEF13 /* Custom_ChartTests.m */; };
 		1D198A22225FA7F600FDEF13 /* Custom_ChartUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D198A21225FA7F600FDEF13 /* Custom_ChartUITests.m */; };
+		1D198A37225FAA1900FDEF13 /* BarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D198A36225FAA1900FDEF13 /* BarChartView.m */; };
+		1D198A3E225FAC4500FDEF13 /* UIColor+BarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D198A3D225FAC4500FDEF13 /* UIColor+BarChartView.m */; };
+		1D198A412260D4DB00FDEF13 /* MockData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D198A402260D4DB00FDEF13 /* MockData.plist */; };
+		1D198A442261D9B500FDEF13 /* SeriesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D198A432261D9B500FDEF13 /* SeriesCell.m */; };
+		1D86AD9A2263394500CE5BCD /* PeriodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D86AD992263394500CE5BCD /* PeriodsCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,15 @@
 		1D198A1D225FA7F600FDEF13 /* Custom ChartUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Custom ChartUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D198A21225FA7F600FDEF13 /* Custom_ChartUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Custom_ChartUITests.m; sourceTree = "<group>"; };
 		1D198A23225FA7F600FDEF13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D198A35225FAA1900FDEF13 /* BarChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarChartView.h; sourceTree = "<group>"; };
+		1D198A36225FAA1900FDEF13 /* BarChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BarChartView.m; sourceTree = "<group>"; };
+		1D198A3C225FAC4500FDEF13 /* UIColor+BarChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+BarChartView.h"; sourceTree = "<group>"; };
+		1D198A3D225FAC4500FDEF13 /* UIColor+BarChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BarChartView.m"; sourceTree = "<group>"; };
+		1D198A402260D4DB00FDEF13 /* MockData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MockData.plist; sourceTree = "<group>"; };
+		1D198A422261D9B500FDEF13 /* SeriesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SeriesCell.h; sourceTree = "<group>"; };
+		1D198A432261D9B500FDEF13 /* SeriesCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SeriesCell.m; sourceTree = "<group>"; };
+		1D86AD982263394500CE5BCD /* PeriodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeriodsCell.h; sourceTree = "<group>"; };
+		1D86AD992263394500CE5BCD /* PeriodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeriodsCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +115,13 @@
 		1D1989FC225FA7F400FDEF13 /* Custom Chart */ = {
 			isa = PBXGroup;
 			children = (
+				1D198A402260D4DB00FDEF13 /* MockData.plist */,
+				1D198A3F2260D4CB00FDEF13 /* Data */,
+				1D198A3A225FAB3D00FDEF13 /* Categories */,
 				1D1989FD225FA7F400FDEF13 /* AppDelegate.h */,
 				1D1989FE225FA7F400FDEF13 /* AppDelegate.m */,
-				1D198A00225FA7F400FDEF13 /* ViewController.h */,
-				1D198A01225FA7F400FDEF13 /* ViewController.m */,
+				1D198A38225FAA1E00FDEF13 /* Views */,
+				1D198A39225FAA2A00FDEF13 /* Controllers */,
 				1D198A03225FA7F400FDEF13 /* Main.storyboard */,
 				1D198A06225FA7F600FDEF13 /* Assets.xcassets */,
 				1D198A08225FA7F600FDEF13 /* LaunchScreen.storyboard */,
@@ -130,6 +147,44 @@
 				1D198A23225FA7F600FDEF13 /* Info.plist */,
 			);
 			path = "Custom ChartUITests";
+			sourceTree = "<group>";
+		};
+		1D198A38225FAA1E00FDEF13 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1D198A35225FAA1900FDEF13 /* BarChartView.h */,
+				1D198A36225FAA1900FDEF13 /* BarChartView.m */,
+				1D198A422261D9B500FDEF13 /* SeriesCell.h */,
+				1D198A432261D9B500FDEF13 /* SeriesCell.m */,
+				1D86AD982263394500CE5BCD /* PeriodsCell.h */,
+				1D86AD992263394500CE5BCD /* PeriodsCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1D198A39225FAA2A00FDEF13 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1D198A00225FA7F400FDEF13 /* ViewController.h */,
+				1D198A01225FA7F400FDEF13 /* ViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1D198A3A225FAB3D00FDEF13 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				1D198A3C225FAC4500FDEF13 /* UIColor+BarChartView.h */,
+				1D198A3D225FAC4500FDEF13 /* UIColor+BarChartView.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		1D198A3F2260D4CB00FDEF13 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D198A412260D4DB00FDEF13 /* MockData.plist in Resources */,
 				1D198A0A225FA7F600FDEF13 /* LaunchScreen.storyboard in Resources */,
 				1D198A07225FA7F600FDEF13 /* Assets.xcassets in Resources */,
 				1D198A05225FA7F400FDEF13 /* Main.storyboard in Resources */,
@@ -262,9 +318,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D198A3E225FAC4500FDEF13 /* UIColor+BarChartView.m in Sources */,
+				1D86AD9A2263394500CE5BCD /* PeriodsCell.m in Sources */,
+				1D198A442261D9B500FDEF13 /* SeriesCell.m in Sources */,
 				1D198A02225FA7F400FDEF13 /* ViewController.m in Sources */,
 				1D198A0D225FA7F600FDEF13 /* main.m in Sources */,
 				1D1989FF225FA7F400FDEF13 /* AppDelegate.m in Sources */,
+				1D198A37225FAA1900FDEF13 /* BarChartView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
