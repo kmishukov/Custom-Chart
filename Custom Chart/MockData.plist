@@ -18,9 +18,9 @@
 				<key>r</key>
 				<real>15</real>
 				<key>g</key>
-				<real>83</real>
+				<integer>83</integer>
 				<key>b</key>
-				<real>157</real>
+				<integer>157</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -35,7 +35,7 @@
 				<key>g</key>
 				<real>175</real>
 				<key>b</key>
-				<real>212</real>
+				<integer>212</integer>
 			</dict>
 		</dict>
 	</array>

@@ -75,7 +75,6 @@ NSMutableArray<NSLayoutConstraint*> *constraintArray;
             }
         }
     }
-
     [self layoutIfNeeded];
     return;
 }

@@ -10,7 +10,7 @@
 #import "../Views/BarChartView.h"
 
 @interface ViewController ()
-@property BarChartView *barChartView;
+@property (strong,nonatomic) BarChartView *barChartView;
 @end
 
 @implementation ViewController
