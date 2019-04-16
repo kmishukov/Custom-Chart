@@ -127,8 +127,8 @@ UIView *topSubview;
                          collectionViewLayout: flowLayout];
     
     [_bottomCollectionView registerClass: PeriodsCell.class forCellWithReuseIdentifier: @"bottomCollectionViewCell"];
-//    _bottomCollectionView.delegate = self;
-//    _bottomCollectionView.dataSource = self;
+    _bottomCollectionView.delegate = self;
+    _bottomCollectionView.dataSource = self;
     _bottomCollectionView.backgroundColor = [UIColor clearColor]; // UITest
     _bottomCollectionView.translatesAutoresizingMaskIntoConstraints = NO;
     [chartFieldView addSubview: _bottomCollectionView];

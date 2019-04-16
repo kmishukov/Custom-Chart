@@ -9,6 +9,7 @@
 #import "BarChartView+ConfigureWithData.h"
 
 @implementation BarChartView (ConfigureWithData)
+
 // Method That Builds UIView
 - (void)configureWithData:(NSDictionary *)data {
     self.dictionary = data;
@@ -20,10 +21,11 @@
             self.periodMaxValue = [totalValue doubleValue];
         }
     }
-    NSString *sWidgetName = self.dictionary[@"sWidgetName"] != nil ? self.dictionary[@"sWidgetName"] : @"???";
-    NSString *sMeasureName = self.dictionary[@"sMeasureName"] != nil ? self.dictionary[@"sMeasureName"] : @"???";
+    NSString *sWidgetName = (self.dictionary[@"sWidgetName"] != nil) ? self.dictionary[@"sWidgetName"] : @"???";
+    NSString *sMeasureName = (self.dictionary[@"sMeasureName"] != nil) ? self.dictionary[@"sMeasureName"] : @"???";
     self.titleLabel.text = sWidgetName;
     self.subtitleLabel.text = sMeasureName;
     [self layoutIfNeeded];
 }
+
 @end
